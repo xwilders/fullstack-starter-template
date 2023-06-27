@@ -1,29 +1,12 @@
 ## Only for local development or running tests
 
-version: '3.4'
-
+version: '3.8'
 services:
-  postgres:
-    image: postgres:alpine
-    container_name: postgres
+  mongodb:
+    image: mongo:latest
     ports:
-      - 5432:5432
-    environment:
-      POSTGRES_USER: 'user'
-      POSTGRES_PASSWORD: 'password'
-      POSTGRES_DB: 'my_app'
+      - '27017:27017'
     volumes:
-      - postgres:/var/lib/postgresql/data
-
+      - mongodb:/data/db
 volumes:
-  postgres:
-# version: '3.8'
-# services:
-#   mongodb:
-#     image: mongo:latest
-#     ports:
-#       - '27017:27017'
-#     volumes:
-#       - mongodb:/data/db
-# volumes:
-#   mongodb:
+  mongodb:

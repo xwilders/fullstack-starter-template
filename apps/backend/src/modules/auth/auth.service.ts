@@ -1,4 +1,5 @@
-import { User } from '@prisma/client';
+import mongoose, { Schema } from 'mongoose';
+import User, { IUser } from '../../../db/schemas';
 import { TRPCError } from '@trpc/server';
 import { SignInDto, SignUpDto } from './auth.dtos';
 import { sign } from 'jsonwebtoken';
@@ -6,24 +7,25 @@ import { authConfig } from '../../configs/auth.config';
 import { hash, compare } from 'bcryptjs';
 import { Context } from '../../server/context';
 
-type UserResponse = Omit<User, 'password'>;
+type UserResponse = Pick<
+  IUser,
+  '_id' | 'email' | 'createdAt' | 'updatedAt' | 'role'
+>;
 type SignUpResult = UserResponse & { accessToken: string };
 
-export const signUp = async (
-  input: SignUpDto,
-  ctx: Context
-): Promise<UserResponse> => {
+export const signUp = async (input: SignUpDto): Promise<UserResponse> => {
   const bcryptHash = await hash(input.password, 10);
 
-  const user = await ctx.prisma.user.create({
-    data: {
-      email: input.email,
-      password: bcryptHash,
-      role: 'user',
-    },
+  const user = new User({
+    email: input.email,
+    password: bcryptHash,
+    role: 'user',
   });
+
+  await user.save();
+
   return {
-    id: user.id,
+    _id: user._id,
     email: user.email,
     createdAt: user.createdAt,
     updatedAt: user.updatedAt,
@@ -31,15 +33,8 @@ export const signUp = async (
   };
 };
 
-export const signIn = async (
-  input: SignInDto,
-  ctx: Context
-): Promise<SignUpResult> => {
-  const user = await ctx.prisma.user.findUnique({
-    where: {
-      email: input.email,
-    },
-  });
+export const signIn = async (input: SignInDto): Promise<SignUpResult> => {
+  const user = await User.findOne({ email: input.email });
 
   const error = new TRPCError({
     message: 'Incorrect email or password',
@@ -58,7 +53,7 @@ export const signIn = async (
 
   const token = sign(
     {
-      id: user.id,
+      id: user._id,
       roles: user.role,
     },
     authConfig.secretKey,
@@ -66,7 +61,7 @@ export const signIn = async (
   );
 
   return {
-    id: user.id,
+    _id: user._id,
     email: user.email,
     createdAt: user.createdAt,
     updatedAt: user.updatedAt,

@@ -30,7 +30,6 @@
     "backend:dev": "nx run backend:serve",
     "frontend:dev": "nx run frontend:serve",
     "frontend:storybook": "nx run frontend:storybook",
-    "migrate:dev": "prisma migrate dev",
     "docker:env": "docker compose --file docker/docker-compose.yaml up --build"
   },
   "private": true,
@@ -87,7 +86,6 @@
     "jsdom": "~20.0.3",
     "nx": "15.5.3",
     "prettier": "^2.6.2",
-    "prisma": "^4.9.0",
     "react-refresh": "^0.10.0",
     "react-test-renderer": "18.2.0",
     "ts-jest": "28.0.5",
@@ -105,7 +103,6 @@
     "@emotion/react": "^11.10.5",
     "@emotion/styled": "^11.10.5",
     "@fastify/cors": "^8.2.0",
-    "@prisma/client": "^4.9.0",
     "@tanstack/react-query": "^4.22.0",
     "@trpc/client": "^10.9.0",
     "@trpc/next": "^10.9.0",
@@ -128,10 +125,6 @@
     "tslib": "^2.3.0",
     "zod": "^3.20.2",
     "zustand": "^4.3.2"
-  },
-  "prisma": {
-    "schema": "apps/backend/prisma/schema.prisma",
-    "env": "apps/backend/.env"
   },
   "volta": {
     "node": "16.16.0"

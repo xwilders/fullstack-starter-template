@@ -31,7 +31,7 @@ This template includes a bunch of libraries to get you up and running quickly an
 ### Backend
 
 - [Fastify](https://www.fastify.io/) - fast web framework for NodeJS
-- [Prisma](https://www.prisma.io/) - new generation ORM for working with relational databases
+- [Mongoose](https://mongoosejs.com/) - elegant mongodb object modeling for node.js
 - [Zod](https://github.com/colinhacks/zod) - TypeScript-first schema validation with static type inference
 - [dotenv](https://www.npmjs.com/package/dotenv) - to load your configs from an .env file
 - [env-var](https://www.npmjs.com/package/env-var) - validate and sanitize your environmental variables
@@ -47,7 +47,7 @@ This template includes a bunch of libraries to get you up and running quickly an
 
 - Clone the repository
 - Copy `.env.example` and rename to `.env`
-- `npm run docker:env` - setup the database (postgresql) in docker
+- `npm run docker:env` - setup the database (mongodb) in docker
 - `npm install` - install dependencies
 - `npm run migrate:dev` - run migrations to create tables
 - `npm run backend:dev` - run backend

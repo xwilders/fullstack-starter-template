@@ -2,9 +2,13 @@ import { inferAsyncReturnType, TRPCError } from '@trpc/server';
 import { CreateFastifyContextOptions } from '@trpc/server/adapters/fastify';
 import { verify } from 'jsonwebtoken';
 import { authConfig } from '../configs/auth.config';
-import { PrismaClient } from '@prisma/client';
+import mongoose from 'mongoose';
 
-export const prisma = new PrismaClient();
+if (process.env.DATABASE_URL) {
+  mongoose.connect(process.env.DATABASE_URL);
+} else {
+  throw new Error('DATABASE_URL not defined!');
+}
 
 export interface User {
   email: string;
@@ -22,13 +26,13 @@ export async function createContext({ req, res }: CreateFastifyContextOptions) {
       const user = await decodeAndVerifyJwtToken(
         req.headers.authorization.split(' ')[1]
       );
-      return { req, res, prisma, user };
+      return { req, res, user };
     } catch (err) {
       throw new TRPCError({ message: 'Unauthorized', code: 'UNAUTHORIZED' });
     }
   }
 
-  return { req, res, prisma };
+  return { req, res };
 }
 
 export type Context = inferAsyncReturnType<typeof createContext>;

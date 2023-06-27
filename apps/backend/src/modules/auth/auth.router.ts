@@ -5,9 +5,9 @@ import { signIn, signUp } from './auth.service';
 export const authRouter = router({
   signUp: noAuthProcedure
     .input(userCredentialsSchema)
-    .mutation(async ({ input, ctx }) => signUp(input, ctx)),
+    .mutation(async ({ input }) => signUp(input)),
 
   signIn: noAuthProcedure
     .input(userCredentialsSchema)
-    .mutation(async ({ input, ctx }) => signIn(input, ctx)),
+    .mutation(async ({ input }) => signIn(input)),
 });
