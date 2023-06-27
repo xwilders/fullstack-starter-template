@@ -26,7 +26,7 @@ import {
 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 import { ReactText } from 'react';
-import AuthHeader from '../Auth/AuthHeader/AuthHeader';
+import AuthHeader from '@frontend/components/Auth/AuthHeader/AuthHeader';
 import { Link as RouterLink } from 'react-router-dom';
 
 interface LinkItemProps {

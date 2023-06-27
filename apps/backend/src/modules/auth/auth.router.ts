@@ -1,4 +1,4 @@
-import { noAuthProcedure, router } from '../../server/trpc';
+import { noAuthProcedure, router } from '@backend/server/trpc';
 import { userCredentialsSchema } from './auth.dtos';
 import { signIn, signUp } from './auth.service';
 

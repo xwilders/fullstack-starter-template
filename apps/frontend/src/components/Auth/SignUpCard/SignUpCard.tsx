@@ -1,4 +1,4 @@
-import { trpc } from '@utils/trpc';
+import { trpc } from '@frontend/utils/trpc';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
 import SignUpCardUI, { EmailAndPassword } from './SignUpCardUI';

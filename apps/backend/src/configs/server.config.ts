@@ -1,4 +1,4 @@
-import type { ServerOptions } from '../server/server';
+import type { ServerOptions } from '@backend/server/server';
 import { get } from 'env-var';
 import { config } from 'dotenv';
 config();

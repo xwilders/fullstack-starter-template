@@ -1,4 +1,4 @@
-import { useGlobalStateStore } from '@GlobalState';
+import { useGlobalStateStore } from '@frontend/app/GlobalState';
 import { useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { toast } from 'react-toastify';

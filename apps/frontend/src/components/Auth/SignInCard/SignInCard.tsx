@@ -1,5 +1,5 @@
-import { useGlobalStateStore } from '@GlobalState';
-import { trpc } from '@utils/trpc';
+import { useGlobalStateStore } from '@frontend/app/GlobalState';
+import { trpc } from '@frontend/utils/trpc';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';

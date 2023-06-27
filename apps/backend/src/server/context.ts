@@ -1,7 +1,7 @@
 import { inferAsyncReturnType, TRPCError } from '@trpc/server';
 import { CreateFastifyContextOptions } from '@trpc/server/adapters/fastify';
 import { verify } from 'jsonwebtoken';
-import { authConfig } from '../configs/auth.config';
+import { authConfig } from '@backend/configs/auth.config';
 import mongoose from 'mongoose';
 
 if (process.env.DATABASE_URL) {

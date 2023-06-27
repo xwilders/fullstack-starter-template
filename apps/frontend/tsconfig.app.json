@@ -2,11 +2,7 @@
   "extends": "./tsconfig.json",
   "compilerOptions": {
     "outDir": "../../dist/out-tsc",
-    "types": ["node"],
-    "paths": {
-      "@utils/*": ["apps/frontend/src/utils/*"],
-      "@GlobalState": ["apps/frontend/src/app/GlobalState.ts"]
-    }
+    "types": ["node"]
   },
   "files": [
     "../../node_modules/@nx/react/typings/cssmodule.d.ts",

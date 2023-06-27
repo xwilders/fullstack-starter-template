@@ -1,4 +1,4 @@
-import { useGlobalStateStore } from '@GlobalState';
+import { useGlobalStateStore } from '@frontend/app/GlobalState';
 import AuthHeaderUI from './AuthHeaderUI';
 import { useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';

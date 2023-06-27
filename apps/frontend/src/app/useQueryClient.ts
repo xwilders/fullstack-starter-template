@@ -2,7 +2,7 @@ import SuperJSON from 'superjson';
 import { useState } from 'react';
 import { QueryClient } from '@tanstack/react-query';
 import { httpBatchLink } from '@trpc/client';
-import { trpc } from '../utils/trpc';
+import { trpc } from '@frontend/utils/trpc';
 
 export const useQueryTrpcClient = () => {
   const APP_URL = import.meta.env.VITE_APP_URL;

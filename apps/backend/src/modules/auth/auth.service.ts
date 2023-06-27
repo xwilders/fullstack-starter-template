@@ -1,11 +1,11 @@
 import mongoose, { Schema } from 'mongoose';
-import User, { IUser } from '../../../db/schemas';
+import User, { IUser } from '@backend/db/schemas';
 import { TRPCError } from '@trpc/server';
 import { SignInDto, SignUpDto } from './auth.dtos';
 import { sign } from 'jsonwebtoken';
-import { authConfig } from '../../configs/auth.config';
+import { authConfig } from '@backend/configs/auth.config';
 import { hash, compare } from 'bcryptjs';
-import { Context } from '../../server/context';
+import { Context } from '@backend/server/context';
 
 type UserResponse = Pick<
   IUser,

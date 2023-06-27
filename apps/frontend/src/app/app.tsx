@@ -1,14 +1,14 @@
 import { Route, Routes } from 'react-router-dom';
-import SidebarWithHeader from '../components/SidebarWithHeader/SidebarWithHeader';
+import SidebarWithHeader from '@frontend/components/SidebarWithHeader/SidebarWithHeader';
 import { QueryClientProvider } from '@tanstack/react-query';
-import { trpc } from '../utils/trpc';
-import SignUpCard from '../components/Auth/SignUpCard/SignUpCard';
-import SignInCard from '../components/Auth/SignInCard/SignInCard';
+import { trpc } from '@frontend/utils/trpc';
+import SignUpCard from '@frontend/components/Auth/SignUpCard/SignUpCard';
+import SignInCard from '@frontend/components/Auth/SignInCard/SignInCard';
 import { useQueryTrpcClient } from './useQueryClient';
-import AuthVerify from '../components/Auth/AuthVerify';
+import AuthVerify from '@frontend/components/Auth/AuthVerify';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
-import Home from '../pages/Home';
+import Home from '@frontend/pages/Home';
 import { Box } from '@chakra-ui/react';
 
 export function App() {
