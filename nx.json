@@ -3,7 +3,7 @@
   "npmScope": "my-monorepo",
   "tasksRunnerOptions": {
     "default": {
-      "runner": "nx/tasks-runners/default",
+      "runner": "nx-cloud",
       "options": {
         "cacheableOperations": [
           "build",
@@ -11,7 +11,8 @@
           "test",
           "e2e",
           "build-storybook"
-        ]
+        ],
+        "accessToken": "NmI3NThlMDAtNTBjNy00ODdlLThiZmEtOTIyZWY4Y2Y0Mzk5fHJlYWQtd3JpdGU="
       }
     }
   },
@@ -47,7 +48,7 @@
     "sharedGlobals": ["{workspaceRoot}/babel.config.json"]
   },
   "generators": {
-    "@nrwl/react": {
+    "@nx/react": {
       "application": {
         "style": "css",
         "linter": "eslint",
