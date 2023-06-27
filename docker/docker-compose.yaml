@@ -17,3 +17,13 @@ services:
 
 volumes:
   postgres:
+# version: '3.8'
+# services:
+#   mongodb:
+#     image: mongo:latest
+#     ports:
+#       - '27017:27017'
+#     volumes:
+#       - mongodb:/data/db
+# volumes:
+#   mongodb:
