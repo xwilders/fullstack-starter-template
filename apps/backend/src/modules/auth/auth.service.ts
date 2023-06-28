@@ -22,7 +22,14 @@ export const signUp = async (input: SignUpDto): Promise<UserResponse> => {
     role: 'user',
   });
 
-  await user.save();
+  const error = new TRPCError({
+    message: 'User already exists',
+    code: 'UNAUTHORIZED',
+  });
+
+  await user.save().catch((e) => {
+    throw error;
+  });
 
   return {
     _id: user._id,
