@@ -9,7 +9,6 @@ import AuthVerify from '@frontend/components/Auth/AuthVerify';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import Home from '@frontend/pages/Home';
-import { Box } from '@chakra-ui/react';
 
 export function App() {
   const { queryClient, trpcClient } = useQueryTrpcClient();
@@ -29,7 +28,7 @@ export function App() {
             <Route path="/" element={<Home />} />
             <Route path="/sign-up" element={<SignUpCard />} />
             <Route path="/login" element={<SignInCard />} />
-            <Route path="*" element={<Box>Not Found</Box>} />
+            <Route path="*" element={<div>Not Found</div>} />
           </Routes>
         </SidebarWithHeader>
       </QueryClientProvider>

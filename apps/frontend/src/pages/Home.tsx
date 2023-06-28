@@ -1,10 +1,9 @@
-import { Box, Heading } from '@chakra-ui/react';
 import React from 'react';
 
 const Home = () => {
   return (
-    <Box>
-      <Heading>Lorem ipsum</Heading>
+    <div>
+      <h1 className="mb-4 text-4xl font-extrabold text-white">Lorem ipsum</h1>
 
       <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
 
@@ -67,7 +66,7 @@ const Home = () => {
         volutpat. Nam dui mi, tincidunt quis, accumsan porttitor, facilisis
         luctus, metus
       </p>
-    </Box>
+    </div>
   );
 };
 
