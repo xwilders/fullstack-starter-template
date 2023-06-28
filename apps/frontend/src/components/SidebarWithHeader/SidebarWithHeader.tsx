@@ -25,7 +25,6 @@ import {
   FiBell,
 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
-import { ReactText } from 'react';
 import AuthHeader from '@frontend/components/Auth/AuthHeader/AuthHeader';
 import { Link as RouterLink } from 'react-router-dom';
 
@@ -109,7 +108,7 @@ const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
 
 interface NavItemProps extends FlexProps {
   icon: IconType;
-  children: ReactText;
+  children: string | number;
   path: string;
 }
 const NavItem = ({ icon, children, path, ...rest }: NavItemProps) => {

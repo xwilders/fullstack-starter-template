@@ -4,9 +4,13 @@ import react from '@vitejs/plugin-react';
 import viteTsConfigPaths from 'vite-tsconfig-paths';
 
 export default defineConfig({
+  root: './', // Set the root directory
   server: {
     port: 4200,
     host: 'localhost',
+    fs: {
+      allow: ['..'], // Allow serving files outside project root
+    },
   },
   plugins: [
     react(),
