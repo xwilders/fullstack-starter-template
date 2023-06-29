@@ -1,8 +1,8 @@
 import { useState, ReactNode } from 'react';
-import cx from 'clsx';
 import { FiEye, FiEyeOff } from 'react-icons/fi';
 import { useForm, UseFormRegister, FieldError } from 'react-hook-form';
 import { Link } from 'react-router-dom';
+import { Input } from '@frontend/components';
 
 export type EmailAndPassword = {
   email: string;
@@ -13,49 +13,6 @@ type SignUpCardProps = {
   onSubmit(values: EmailAndPassword): void;
 };
 
-type InputProps = {
-  name: keyof EmailAndPassword;
-  label: string;
-  type?: string;
-  validation?: {
-    minLength?: { value: number; message: string };
-    required: string | boolean;
-  };
-  register: UseFormRegister<EmailAndPassword>;
-  className?: string;
-  children?: ReactNode;
-  error?: FieldError;
-};
-
-const Input = ({
-  name,
-  label,
-  register,
-  validation,
-  type,
-  className,
-  children,
-  error,
-}: InputProps) => {
-  return (
-    <div className="flex flex-col w-full">
-      <label htmlFor={name} className="mb-2 font-semibold">
-        {label}
-      </label>
-      <div className={className}>
-        <input
-          {...register(name, validation)}
-          type={type}
-          className={`block rounded-md bg-transparent border w-full p-2 pl-4 ${
-            error ? 'border-red-600' : ''
-          }`}
-        />
-        {children}
-      </div>
-      {error && <div className="mt-2 text-red-600">{error.message}</div>}
-    </div>
-  );
-};
 function SignUpCardUI({ onSubmit }: SignUpCardProps) {
   const [showPassword, setShowPassword] = useState(false);
   const {
@@ -104,9 +61,10 @@ function SignUpCardUI({ onSubmit }: SignUpCardProps) {
                 <button className="absolute top-1/2 right-2 transform -translate-y-1/2 hover:bg-gray-600 p rounded">
                   <div
                     className="hover:bg-gray-600 p-2 rounded"
-                    onClick={() =>
-                      setShowPassword((showPassword) => !showPassword)
-                    }
+                    onClick={(event) => {
+                      setShowPassword((showPassword) => !showPassword);
+                      event.preventDefault();
+                    }}
                   >
                     {showPassword ? <FiEye /> : <FiEyeOff />}
                   </div>
@@ -123,7 +81,7 @@ function SignUpCardUI({ onSubmit }: SignUpCardProps) {
               <div>
                 <div className="text-center">
                   Already a user?{' '}
-                  <Link to={'/login'} className="text-blue-400">
+                  <Link to={'/login'} className="text-blue-400 hover:underline">
                     Login
                   </Link>
                 </div>
