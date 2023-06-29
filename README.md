@@ -1,16 +1,3 @@
-# Full stack starter template
-
-Monorepository TypeScript template for full stack applications.
-
-- Maximized for productivity
-- Based on cutting edge technologies
-- Follows best practices for project structure, architecture, security
-- Includes authentication module
-
-## Libraries/frameworks
-
-This template includes a bunch of libraries to get you up and running quickly and improve your developer experience.
-
 ### Frontend
 
 - [React](https://reactjs.org/) - main frontend library
@@ -23,8 +10,8 @@ This template includes a bunch of libraries to get you up and running quickly an
 
 #### Frontend UI
 
-- [ChakraUI](https://chakra-ui.com/) - UI library that lets you create beautiful interfaces quickly
-- [Framer Motion](https://www.framer.com/motion/) - create beautiful motion animations ([compatible with ChakraUI](https://chakra-ui.com/getting-started/with-framer))
+- [TailwindCSS](https://tailwindcss.com/) - Rapidly build modern websites without ever leaving your HTML
+- [Headless UI](https://headlessui.com/) - Completely unstyled, fully accessible UI components, designed to integrate beautifully with Tailwind CSS
 - [React Icons](https://react-icons.github.io/react-icons/) - icons for your app
 - [React-toastify](https://fkhadra.github.io/react-toastify/introduction) - show notifications when something happens
 
@@ -47,11 +34,8 @@ This template includes a bunch of libraries to get you up and running quickly an
 
 - Clone the repository
 - Copy `.env.example` and rename to `.env`
-- `npm run docker:env` - setup the database (mongodb) in docker
 - `npm install` - install dependencies
-- `npm run migrate:dev` - run migrations to create tables
-- `npm run backend:dev` - run backend
-- `npm run frontend:dev` - run frontend
+- `npm start` - run local database (MongoDB, Docker), frontend, and backend
 
 ## Scripts
 
@@ -59,9 +43,3 @@ This template includes a bunch of libraries to get you up and running quickly an
 - `npm run dep-graph` - see dependency graph
 - For more commands check `package.json`
 - To generate new apps in the monorepo, check out [NX documentation](https://nx.dev/packages/nx/documents/generate).
-
-## Check out my other repositories
-
-- [Domain-Driven Hexagon](https://github.com/Sairyss/domain-driven-hexagon) - Guide on Domain-Driven Design, software architecture, design patterns, best practices etc.
-- [Backend best practices](https://github.com/Sairyss/backend-best-practices) - Best practices, tools and guidelines for backend development.
-- [System Design Patterns](https://github.com/Sairyss/system-design-patterns) - list of topics and resources related to distributed systems, system design, microservices, scalability and performance, etc.
