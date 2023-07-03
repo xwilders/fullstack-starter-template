@@ -1,20 +1,4 @@
-import { ReactNode } from 'react';
-import {
-  IconButton,
-  Box,
-  CloseButton,
-  Flex,
-  HStack,
-  Icon,
-  useColorModeValue,
-  Link,
-  Drawer,
-  DrawerContent,
-  Text,
-  useDisclosure,
-  BoxProps,
-  FlexProps,
-} from '@chakra-ui/react';
+import { ReactNode, useState } from 'react';
 import {
   FiHome,
   FiTrendingUp,
@@ -23,10 +7,12 @@ import {
   FiSettings,
   FiMenu,
   FiBell,
+  FiX,
 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 import AuthHeader from '@frontend/components/Auth/AuthHeader/AuthHeader';
-import { Link as RouterLink } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
+import clsx from 'clsx';
 
 interface LinkItemProps {
   name: string;
@@ -46,150 +32,127 @@ export default function SidebarWithHeader({
 }: {
   children: ReactNode;
 }) {
-  const { isOpen, onOpen, onClose } = useDisclosure();
+  const [isOpen, openSidebar] = useState(false);
+
+  const onClose = () => {
+    openSidebar(false);
+  };
+
+  const onOpen = () => {
+    openSidebar(true);
+  };
+
   return (
-    <Box minH="100vh" bg={useColorModeValue('gray.100', 'gray.900')}>
+    <div className="min-h-screen bg-gray-900">
+      <SidebarContent onClose={onClose} className="hidden md:block" />
+
       <SidebarContent
-        onClose={() => onClose}
-        display={{ base: 'none', md: 'block' }}
-      />
-      <Drawer
-        autoFocus={false}
-        isOpen={isOpen}
-        placement="left"
         onClose={onClose}
-        returnFocusOnClose={false}
-        onOverlayClick={onClose}
-        size="full"
-      >
-        <DrawerContent>
-          <SidebarContent onClose={onClose} />
-        </DrawerContent>
-      </Drawer>
-      {/* mobilenav */}
-      <MobileNav onOpen={onOpen} />
-      <Box ml={{ base: 0, md: 60 }} p="4">
-        {children}
-      </Box>
-    </Box>
+        className={clsx(
+          'z-10 block md:hidden',
+          'w-full transition-all duration-300 ease-out',
+          {
+            'translate-x-0 transform': isOpen,
+            '-translate-x-full': !isOpen,
+          }
+        )}
+      />
+
+      <TopBar onOpen={onOpen} />
+      <div className="ml-0 px-12 pt-4 md:ml-60">{children}</div>
+    </div>
   );
 }
 
-interface SidebarProps extends BoxProps {
+interface SidebarProps {
   onClose: () => void;
+  className: string;
 }
 
-const SidebarContent = ({ onClose, ...rest }: SidebarProps) => {
+const SidebarContent = ({ onClose, className }: SidebarProps) => {
   return (
-    <Box
-      transition="3s ease"
-      bg={useColorModeValue('white', 'gray.900')}
-      borderRight="1px"
-      borderRightColor={useColorModeValue('gray.200', 'gray.700')}
-      w={{ base: 'full', md: 60 }}
-      pos="fixed"
-      h="full"
-      {...rest}
+    <div
+      className={clsx(
+        className,
+        'fixed  h-full border-r border-gray-700 bg-gray-900 md:w-64'
+      )}
     >
-      <Flex h="20" alignItems="center" mx="8" justifyContent="space-between">
-        <Text fontSize="2xl" fontFamily="monospace" fontWeight="bold">
-          Logo
-        </Text>
-        <CloseButton display={{ base: 'flex', md: 'none' }} onClick={onClose} />
-      </Flex>
+      <div className="mx-8 flex h-20 items-center justify-between">
+        <div className="font-mono text-2xl font-bold">Logo</div>
+        <button
+          className="flex rounded p-2 outline-none  hover:bg-gray-600 md:hidden"
+          onClick={onClose}
+        >
+          <FiX />
+        </button>
+      </div>
       {LinkItems.map((link) => (
-        <NavItem key={link.name} icon={link.icon} path={link.path}>
+        <NavItem
+          key={link.name}
+          icon={link.icon}
+          path={link.path}
+          onClick={onClose}
+        >
           {link.name}
         </NavItem>
       ))}
-    </Box>
+    </div>
   );
 };
 
-interface NavItemProps extends FlexProps {
+interface NavItemProps {
   icon: IconType;
   children: string | number;
   path: string;
+  onClick: () => void;
 }
-const NavItem = ({ icon, children, path, ...rest }: NavItemProps) => {
+const NavItem = ({ icon, children, path, onClick }: NavItemProps) => {
+  const Icon = icon;
+
   return (
-    <Link
-      as={RouterLink}
-      to={path}
-      style={{ textDecoration: 'none' }}
-      _focus={{ boxShadow: 'none' }}
-    >
-      <Flex
-        align="center"
-        p="4"
-        mx="4"
-        borderRadius="lg"
-        role="group"
-        cursor="pointer"
-        _hover={{
-          bg: 'cyan.400',
-          color: 'white',
-        }}
-        {...rest}
+    <Link to={path} className="focus:shadow-none">
+      <div
+        className="mx-4 cursor-pointer items-center rounded-lg p-4 hover:bg-cyan-400 hover:text-white"
+        onClick={onClick}
       >
-        {icon && (
-          <Icon
-            mr="4"
-            fontSize="16"
-            _groupHover={{
-              color: 'white',
-            }}
-            as={icon}
-          />
-        )}
+        <Icon className="mr-4 inline-block text-base hover:text-white" />
         {children}
-      </Flex>
+      </div>
     </Link>
   );
 };
 
-interface MobileProps extends FlexProps {
+interface MobileProps {
   onOpen: () => void;
 }
-const MobileNav = ({ onOpen, ...rest }: MobileProps) => {
+const TopBar = ({ onOpen }: MobileProps) => {
   return (
-    <Flex
-      ml={{ base: 0, md: 60 }}
-      px={{ base: 4, md: 4 }}
-      height="20"
-      alignItems="center"
-      bg={useColorModeValue('white', 'gray.900')}
-      borderBottomWidth="1px"
-      borderBottomColor={useColorModeValue('gray.200', 'gray.700')}
-      justifyContent={{ base: 'space-between', md: 'flex-end' }}
-      {...rest}
+    <div
+      className={
+        'ml-0 flex h-20 items-center justify-between border-b border-gray-700 bg-gray-900 px-4 md:ml-60 md:justify-end'
+      }
     >
-      <IconButton
-        display={{ base: 'flex', md: 'none' }}
+      <button
+        className={
+          'flex rounded p-2  outline-none hover:bg-gray-600 focus:outline-none md:hidden'
+        }
         onClick={onOpen}
-        variant="outline"
         aria-label="open menu"
-        icon={<FiMenu />}
-      />
-
-      <Text
-        display={{ base: 'flex', md: 'none' }}
-        fontSize="2xl"
-        fontFamily="monospace"
-        fontWeight="bold"
       >
-        Logo
-      </Text>
+        <FiMenu />
+      </button>
 
-      <HStack spacing={{ base: '0', md: '6' }}>
-        <IconButton
-          size="lg"
-          variant="ghost"
+      <div className="flex font-mono text-2xl font-bold md:hidden">Logo</div>
+
+      <div className="flex space-x-2   md:space-x-6">
+        <button
+          className="rounded bg-transparent p-2 text-lg hover:bg-gray-600"
           aria-label="open menu"
-          icon={<FiBell />}
-        />
+        >
+          <FiBell />
+        </button>
         <AuthHeader />
-      </HStack>
-    </Flex>
+      </div>
+    </div>
   );
 };

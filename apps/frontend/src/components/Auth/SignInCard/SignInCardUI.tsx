@@ -22,22 +22,23 @@ function SignInCardUI({
 
   return (
     <div className="bg-gray-800">
-      <div className="flex flex-col max-w-lg py-12 px-6 mx-auto space-y-8">
+      <div className="mx-auto flex max-w-lg flex-col space-y-8 px-6 py-12">
         <div className="flex flex-col items-center space-x-4 space-y-3">
           <div className="text-4xl font-bold">Sign in to your account</div>
-          <div className="text-gray-600 text-lg">
+          <div className="text-lg text-gray-600">
             to enjoy all of our cool features
             <span role="img" aria-label="peace-emoji" className="pl-1">
               ✌️
             </span>
           </div>
         </div>
-        <div className="rounded-lg bg-gray-700 shadow-lg p-8">
+        <div className="rounded-lg bg-gray-700 p-8 shadow-lg">
           <form onSubmit={handleSubmit(onSubmit)}>
             <div className="flex flex-col space-y-4">
               <Input
                 name="email"
                 label="Email"
+                type="email"
                 validation={{ required: 'Email is required' }}
                 register={register}
                 error={errors.email}
@@ -45,6 +46,7 @@ function SignInCardUI({
               <Input
                 name="password"
                 label="Password"
+                type="password"
                 validation={{
                   required: 'Password is required',
                   minLength: {
@@ -56,18 +58,18 @@ function SignInCardUI({
                 className="relative inline-block w-full"
                 error={errors.password}
               />
-              <div className="flex flex-col sm:flex-row justify-between items-start">
+              <div className="flex flex-col items-start justify-between sm:flex-row">
                 <div className="flex items-center space-x-3">
                   <input
                     type="checkbox"
                     id="remember"
                     checked={rememberMe}
-                    className="w-5 h-5 transition duration-300 rounded cursor-pointer"
+                    className="h-5 w-5 cursor-pointer rounded transition duration-300"
                     onChange={(e) => handleRememberMe(!rememberMe)}
                   />
                   <label
                     htmlFor="remember"
-                    className="text-gray-100 cursor-pointer select-none"
+                    className="cursor-pointer select-none text-gray-100"
                   >
                     Remember me
                   </label>
@@ -79,7 +81,7 @@ function SignInCardUI({
               </div>
               <div className="flex flex-col space-y-10 pt-6">
                 <button
-                  className="text-md bg-blue-400 text-white hover:bg-blue-500 py-2 px-4 rounded font-semibold"
+                  className="text-md rounded bg-blue-400 px-4 py-2 font-semibold text-white hover:bg-blue-500"
                   type={'submit'}
                 >
                   {isSubmitting ? 'Signing in' : 'Sign in'}
