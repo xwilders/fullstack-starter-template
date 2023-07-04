@@ -11,7 +11,7 @@ import {
 } from 'react-icons/fi';
 import { IconType } from 'react-icons';
 import AuthHeader from '@frontend/components/Auth/AuthHeader/AuthHeader';
-import { Route, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import clsx from 'clsx';
 
 interface LinkItemProps {
@@ -43,14 +43,14 @@ export default function SidebarWithHeader({
   };
 
   return (
-    <div className="min-h-screen bg-gray-900">
+    <div className="min-h-screen bg-gray-900 text-white">
       <SidebarContent onClose={onClose} className="hidden md:block" />
 
       <SidebarContent
         onClose={onClose}
         className={clsx(
           'z-10 block md:hidden',
-          'w-full transition-all duration-300 ease-out',
+          'w-full transition-all duration-300 ease-in-out',
           {
             'translate-x-0 transform': isOpen,
             '-translate-x-full': !isOpen,
@@ -74,13 +74,13 @@ const SidebarContent = ({ onClose, className }: SidebarProps) => {
     <div
       className={clsx(
         className,
-        'fixed  h-full border-r border-gray-700 bg-gray-900 md:w-64'
+        'fixed h-full border-r border-gray-700 bg-gray-900 md:w-64'
       )}
     >
       <div className="mx-8 flex h-20 items-center justify-between">
         <div className="font-mono text-2xl font-bold">Logo</div>
         <button
-          className="flex rounded p-2 outline-none  hover:bg-gray-600 md:hidden"
+          className="flex rounded p-2 outline-none hover:bg-gray-600 md:hidden"
           onClick={onClose}
         >
           <FiX />
@@ -129,13 +129,11 @@ const TopBar = ({ onOpen }: MobileProps) => {
   return (
     <div
       className={
-        'ml-0 flex h-20 items-center justify-between border-b border-gray-700 bg-gray-900 px-4 md:ml-60 md:justify-end'
+        'ml-0 flex items-center justify-between border-b border-gray-700 bg-gray-900 px-4 md:ml-60 md:justify-end'
       }
     >
       <button
-        className={
-          'flex rounded p-2  outline-none hover:bg-gray-600 focus:outline-none md:hidden'
-        }
+        className={'flex rounded p-2 hover:bg-gray-600 md:hidden'}
         onClick={onOpen}
         aria-label="open menu"
       >
@@ -144,9 +142,9 @@ const TopBar = ({ onOpen }: MobileProps) => {
 
       <div className="flex font-mono text-2xl font-bold md:hidden">Logo</div>
 
-      <div className="flex space-x-2   md:space-x-6">
+      <div className="m-2 flex space-x-2 md:space-x-6">
         <button
-          className="rounded bg-transparent p-2 text-lg hover:bg-gray-600"
+          className="m-2 rounded bg-transparent p-1 text-lg hover:bg-gray-600"
           aria-label="open menu"
         >
           <FiBell />

@@ -10,8 +10,8 @@
 
 #### Frontend UI
 
-- [TailwindCSS](https://tailwindcss.com/) - Rapidly build modern websites without ever leaving your HTML
-- [Headless UI](https://headlessui.com/) - Completely unstyled, fully accessible UI components, designed to integrate beautifully with Tailwind CSS
+- [TailwindCSS](https://tailwindcss.com/) - rapidly build modern websites without ever leaving your HTML
+- [Headless UI](https://headlessui.com/) - completely unstyled, fully accessible UI components, designed to integrate beautifully with Tailwind CSS
 - [React Icons](https://react-icons.github.io/react-icons/) - icons for your app
 - [React-toastify](https://fkhadra.github.io/react-toastify/introduction) - show notifications when something happens
 
@@ -19,16 +19,22 @@
 
 - [Fastify](https://www.fastify.io/) - fast web framework for NodeJS
 - [Mongoose](https://mongoosejs.com/) - elegant mongodb object modeling for node.js
-- [Zod](https://github.com/colinhacks/zod) - TypeScript-first schema validation with static type inference
+- [Zod](https://github.com/colinhacks/zod) - typeScript-first schema validation with static type inference
 - [dotenv](https://www.npmjs.com/package/dotenv) - to load your configs from an .env file
 - [env-var](https://www.npmjs.com/package/env-var) - validate and sanitize your environmental variables
 
 ### Shared libraries
 
-- [tRPC](https://trpc.io/) - Remote Procedure Calls for your TypeScript applications. Move faster by removing the need of a traditional API-layer.
+- [tRPC](https://trpc.io/) - remote procedure calls for your TypeScript applications - move faster by removing the need of a traditional API-layer
 - [NX](https://nx.dev/) - build system with first class monorepo support and powerful integrations
 - [Jest](https://jestjs.io/) - testing framework
 - [Eslint](https://eslint.org/) - static code analysis for identifying problematic patterns found in your code
+
+### Deployment
+
+- [MongoDB](https://mongodb.com/) - get your ideas to market faster with a developer data platform built on the leading modern database
+- [AWS](https://aws.amazon.com/) - build sophisticated applications with increased flexibility, scalability and reliability
+- [AWS Elastic Beanstalk](https://aws.amazon.com/elasticbeanstalk/) - deploy and scale web applications
 
 ## Starting the app
 

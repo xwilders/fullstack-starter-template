@@ -11,11 +11,7 @@ module.exports = {
     '../src/**/*.stories.mdx',
     '../src/**/*.stories.@(js|jsx|ts|tsx)',
   ],
-  addons: [
-    '@storybook/addon-essentials',
-    '@chakra-ui/storybook-addon',
-    ...(rootMain.addons || []),
-  ],
+  addons: ['@storybook/addon-essentials', ...(rootMain.addons || [])],
   features: {
     emotionAlias: false,
   },

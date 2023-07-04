@@ -1,4 +1,3 @@
-import { ChakraProvider, theme } from '@chakra-ui/react';
 import { Story, Meta } from '@storybook/react';
 import SignUpCardUI from './SignUpCardUI';
 import { BrowserRouter } from 'react-router-dom';
@@ -15,7 +14,7 @@ const Template: Story = (args) => {
     //
   };
   return (
-    <ChakraProvider theme={theme}>
+    <>
       <ToastContainer
         position="bottom-right"
         autoClose={3000}
@@ -26,7 +25,7 @@ const Template: Story = (args) => {
       <BrowserRouter>
         <SignUpCardUI onSubmit={handleOnSubmit} {...args} />
       </BrowserRouter>
-    </ChakraProvider>
+    </>
   );
 };
 
